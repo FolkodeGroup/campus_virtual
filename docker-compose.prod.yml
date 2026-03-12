@@ -1,0 +1,26 @@
+services:
+  backend:
+    image: "${DOCKER_IMAGE_BACKEND:-campus-virtual-backend:latest}"
+    container_name: campus_virtual_backend
+    restart: always
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      NODE_ENV: production
+      PORT: 3000
+    ports:
+      - "3000:3000"
+    networks:
+      - campus_network
+
+  frontend:
+    image: "${DOCKER_IMAGE_FRONTEND:-campus-virtual-frontend:latest}"
+    container_name: campus_virtual_frontend
+    restart: always
+    ports:
+      - "80:80"
+    networks:
+      - campus_network
+
+networks:
+  campus_network:
+    driver: bridge

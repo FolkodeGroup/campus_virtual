@@ -1,0 +1,27 @@
+# Stage 1: Build
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+
+# Copiar archivos raíz y frontend
+COPY package*.json ./
+COPY frontend/package*.json ./frontend/
+
+# Instalar dependencias
+RUN npm install
+
+# Copiar código del frontend
+COPY frontend ./frontend
+
+# Compilar el frontend
+RUN npm run build --workspace=frontend
+
+# Stage 2: Nginx
+FROM nginx:stable-alpine
+
+COPY --from=builder /app/frontend/dist /usr/share/nginx/html
+
+# Copiar configuración de nginx personalizada si se requiere (por ahora usamos default)
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
