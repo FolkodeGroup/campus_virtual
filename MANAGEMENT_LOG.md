@@ -187,3 +187,4 @@
 | dgimenezdeveloper | 15 | Merge de PR | PR #89:  detallo las acciones realizadas en la carpeta backend: | 2026-03-12 |
 | dgimenezdeveloper | 15 | Merge de PR | PR #91: He configurado exitosamente Prisma ORM en el backend del proyecto, ut… | 2026-03-12 |
 | dgimenezdeveloper | 15 | Merge de PR | PR #96: He consolidado y fortalecido la gestión de variables de entorno para … | 2026-03-12 |
+| dgimenezdeveloper | 15 | Merge de PR | PR #98: He completado la configuración del pipeline de CI (Integración Contin… | 2026-03-12 |
