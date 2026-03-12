@@ -1,0 +1,84 @@
+name: Actualización automática de puntajes
+
+concurrency:
+  group: actualizacion-puntajes-semanal-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  schedule:
+    # Todos los domingos a las 00:00 UTC
+    - cron: '0 0 * * 0'
+  workflow_dispatch: # Permite ejecución manual desde la pestaña Actions
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PROJECTS_TOKEN || secrets.GITHUB_TOKEN }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+
+      - name: Generar Log de Gestión (Retroactivo + Sync)
+        env:
+          GITHUB_TOKEN: ${{ secrets.PROJECTS_TOKEN || secrets.GITHUB_TOKEN }}
+        run: node scripts/generar_management_log.cjs
+
+      - name: Verificar issues sin puntaje asignado
+        id: check_puntajes
+        env:
+          GITHUB_TOKEN: ${{ secrets.PROJECTS_TOKEN || secrets.GITHUB_TOKEN }}
+        run: node scripts/check_missing_puntajes.cjs
+
+      - name: Consolidar SCORES.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.PROJECTS_TOKEN || secrets.GITHUB_TOKEN }}
+        run: node scripts/sumar_puntajes.cjs
+
+      - name: Leer reporte de issues sin puntaje
+        id: read_report
+        run: |
+          if [ -f ".missing_puntajes_report.md" ]; then
+            echo "MISSING_REPORT<<EOF" >> $GITHUB_OUTPUT
+            cat .missing_puntajes_report.md >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+          else
+            echo "MISSING_REPORT=## ✅ Todos los issues tienen puntaje asignado." >> $GITHUB_OUTPUT
+          fi
+
+      - name: Crear Pull Request automático con cambios de puntaje
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.PROJECTS_TOKEN || secrets.GITHUB_TOKEN }}
+          commit-message: "chore: actualización automática de puntajes semanal [skip ci]"
+          title: "🔄 Actualización automática de puntajes semanal"
+          body: |
+            Este Pull Request fue generado automáticamente por el workflow semanal
+            de cada domingo a las 00:00 UTC.
+
+            ### Archivos actualizados
+            - `MANAGEMENT_LOG.md` — historial completo de actividades de gestión
+            - `SCORES.md` — puntajes consolidados (issues + gestión)
+
+            ### Cómo revisar
+            1. Revisá el `SCORES.md` para validar los totales
+            2. Si hay issues sin puntaje (ver sección abajo), editá el body del issue
+               y agregá `PUNTAJE: <valor>`
+            3. Mergeá este PR para mantener los puntajes al día en `main`
+
+            ---
+
+            ${{ steps.read_report.outputs.MISSING_REPORT }}
+          branch: chore/actualizacion-puntajes-semanal
+          base: main
+          delete-branch: true
+          add-paths: |
+            MANAGEMENT_LOG.md
+            SCORES.md
