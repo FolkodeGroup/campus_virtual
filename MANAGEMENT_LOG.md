@@ -5,3 +5,4 @@
 
 | Dev | Puntaje | Actividad | Referencia | Fecha |
 |-----|---------|-----------|------------|-------|
+| dgimenezdeveloper | 5 | Creación de milestone | Milestone: Fase 2 — 30 cursos | 2026-03-12 |
