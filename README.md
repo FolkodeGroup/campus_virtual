@@ -53,6 +53,20 @@ Esto levantará:
 
 Los volúmenes están configurados para que los cambios en el código local se reflejen automáticamente en los contenedores (Hot Reload).
 
+## Variables de Entorno
+
+El proyecto utiliza un archivo `.env` en la raíz para centralizar la configuración. Consulta [.env.example](.env.example) para ver la lista completa.
+
+### Variables Requeridas (Backend)
+- `DATABASE_URL`: URL de conexión a PostgreSQL.
+- `JWT_SECRET`: Llave secreta para tokens de autenticación.
+- `PORT`: Puerto del servidor (default: 3000).
+- `NODE_ENV`: Entorno de ejecución (`development`, `production`).
+
+### Variables de Docker
+- `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_DB`: Credenciales de la base de datos.
+- `DB_PORT`: Puerto expuesto de la DB.
+
 ## Gestión de Workspaces
 
 Para ejecutar comandos en un workspace específico:

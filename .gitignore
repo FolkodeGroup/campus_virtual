@@ -3,11 +3,8 @@ node_modules/
 jspm_packages/
 
 # Environment
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env*
+!.env.example
 
 # Build outputs
 dist/
