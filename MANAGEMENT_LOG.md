@@ -185,3 +185,4 @@
 | dgimenezdeveloper | 5 | Apertura de PR | PR #87: A continuación, detallo las acciones realizadas en la carpeta frontend: | 2026-03-12 |
 | dgimenezdeveloper | 15 | Merge de PR | PR #87: A continuación, detallo las acciones realizadas en la carpeta frontend: | 2026-03-12 |
 | dgimenezdeveloper | 15 | Merge de PR | PR #89:  detallo las acciones realizadas en la carpeta backend: | 2026-03-12 |
+| dgimenezdeveloper | 15 | Merge de PR | PR #91: He configurado exitosamente Prisma ORM en el backend del proyecto, ut… | 2026-03-12 |
