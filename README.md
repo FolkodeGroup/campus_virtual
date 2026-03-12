@@ -1,5 +1,7 @@
 # Campus Virtual - Monorepo
 
+![CI Pipeline](https://github.com/FolkodeGroup/campus_virtual/actions/workflows/ci.yml/badge.svg)
+
 Este es el repositorio central para el proyecto del Campus Virtual, gestionado como un monorepo utilizando **npm workspaces**.
 
 ## Estructura del Proyecto
