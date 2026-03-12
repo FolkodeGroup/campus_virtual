@@ -1,6 +1,7 @@
-const express = require('express');
-const cors = require('cors');
-const dotenv = require('dotenv');
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import prisma from './lib/prisma';
 
 dotenv.config();
 
@@ -11,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 // Endpoint de healthcheck
-app.get('/api/health', (req: any, res: any) => {
+app.get('/api/health', (req, res) => {
   res.status(200).json({
     status: 'ok',
     timestamp: new Date().toISOString(),
@@ -19,8 +20,18 @@ app.get('/api/health', (req: any, res: any) => {
   });
 });
 
+// Probar conexión a la base de datos
+app.get('/api/db-check', async (req, res) => {
+  try {
+    await prisma.$connect();
+    res.status(200).json({ status: 'connected', message: 'Prisma connected to PostgreSQL' });
+  } catch (error) {
+    res.status(500).json({ status: 'error', message: 'Prisma connection failed', error });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
 
-module.exports = app;
+export default app;
