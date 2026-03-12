@@ -183,3 +183,4 @@
 | dgimenezdeveloper | 5 | Creación de milestone | Milestone: Fase 1 — 13 cursos | 2026-03-12 |
 | dgimenezdeveloper | 5 | Creación de milestone | Milestone: Fase 2 — 30 cursos | 2026-03-12 |
 | dgimenezdeveloper | 5 | Apertura de PR | PR #87: A continuación, detallo las acciones realizadas en la carpeta frontend: | 2026-03-12 |
+| dgimenezdeveloper | 15 | Merge de PR | PR #87: A continuación, detallo las acciones realizadas en la carpeta frontend: | 2026-03-12 |
