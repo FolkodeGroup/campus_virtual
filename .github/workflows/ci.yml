@@ -18,6 +18,8 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm install
+      - name: Generate Prisma Client
+        run: npm run db:generate --workspace=backend
       - name: Run lint
         run: npm run lint
 
@@ -32,6 +34,8 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm install
+      - name: Generate Prisma Client
+        run: npm run db:generate --workspace=backend
       - name: Build frontend
         run: npm run build --workspace=frontend
 
@@ -46,6 +50,8 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm install
+      - name: Generate Prisma Client
+        run: npm run db:generate --workspace=backend
       - name: Build backend
         run: npm run build --workspace=backend
 
@@ -60,5 +66,7 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm install
+      - name: Generate Prisma Client
+        run: npm run db:generate --workspace=backend
       - name: Run tests
         run: npm run test
