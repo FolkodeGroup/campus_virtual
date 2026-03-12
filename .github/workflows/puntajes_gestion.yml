@@ -11,6 +11,10 @@ on:
   issues:
     types: [opened, labeled, assigned]
 
+concurrency:
+  group: puntajes-gestion
+  cancel-in-progress: false
+
 jobs:
   registrar_puntaje_gestion:
     runs-on: ubuntu-latest
