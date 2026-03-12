@@ -1,0 +1,20 @@
+{
+  "name": "campus-virtual-monorepo",
+  "version": "1.0.0",
+  "description": "Monorepo para el Campus Virtual",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "install:all": "npm install",
+    "dev": "npm run dev --workspaces --if-present",
+    "build": "npm run build --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}
