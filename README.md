@@ -31,9 +31,27 @@ Este es el repositorio central para el proyecto del Campus Virtual, gestionado c
 Los siguientes comandos ejecutan el script correspondiente en todos los workspaces que lo tengan definido:
 
 - **Desarrollo**: `npm run dev`
+- **Desarrollo con Docker**: `npm run docker:dev`
 - **Construcción**: `npm run build`
 - **Pruebas**: `npm test`
 - **Linting**: `npm run lint`
+
+## Desarrollo con Docker
+
+Para levantar el entorno completo (Base de Datos + Backend + Frontend) con un solo comando:
+
+1. Crea tu archivo `.env` en la raíz (puedes copiar el `.env.example`).
+2. Ejecuta:
+   ```bash
+   npm run docker:dev
+   ```
+
+Esto levantará:
+- **PostgreSQL**: Puerto 5432
+- **Backend**: http://localhost:3000
+- **Frontend**: http://localhost:5173
+
+Los volúmenes están configurados para que los cambios en el código local se reflejen automáticamente en los contenedores (Hot Reload).
 
 ## Gestión de Workspaces
 
