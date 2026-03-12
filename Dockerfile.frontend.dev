@@ -1,0 +1,17 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Copiar package.json y package-lock.json
+COPY package*.json ./
+
+# Instalar dependencias
+RUN npm install
+
+# Copiar el resto del código
+COPY . .
+
+EXPOSE 5173
+
+# En Vite es importante usar --host para que Docker exponga el puerto correctamente
+CMD ["npm", "run", "dev", "--", "--host"]
