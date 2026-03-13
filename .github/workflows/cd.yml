@@ -51,6 +51,7 @@ jobs:
           username: ${{ secrets.VPS_USERNAME }}
           key: ${{ secrets.VPS_SSH_KEY }}
           port: 5371
+          
           script: |
             cd ~/campus_virtual
             export DOCKER_IMAGE_BACKEND=${{ secrets.DOCKERHUB_USERNAME }}/campus-virtual-backend:latest
