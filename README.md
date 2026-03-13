@@ -52,7 +52,7 @@ Esto levantará:
 - **PostgreSQL**: Puerto 5432
 - **Backend**: http://localhost:3000
 - **Frontend**: http://localhost:5173
-
+ 
 Los volúmenes están configurados para que los cambios en el código local se reflejen automáticamente en los contenedores (Hot Reload).
 
 ## Variables de Entorno
