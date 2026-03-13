@@ -81,5 +81,21 @@ npm run <script> -w frontend
 npm run <script> -w backend
 ```
 
+## Gestión visual del proyecto
+
+El seguimiento visual y la organización de tareas se realiza mediante el [GitHub Project Campus Virtual](https://github.com/orgs/FolkodeGroup/projects/6) (ProjectV2).
+
+### Columnas estándar
+- **En Progreso**: Tareas en desarrollo.
+- **En Revisión**: Tareas listas para revisión o QA.
+- **Hecho**: Tareas completadas.
+
+### Milestones
+- **Fase 1 — 13 cursos**: Primer objetivo, incluye la creación y gestión de 13 cursos. [Milestone en GitHub](https://github.com/FolkodeGroup/campus_virtual/milestone/1)
+- **Fase 2 — 30 cursos**: Expansión a 30 cursos. [Milestone en GitHub](https://github.com/FolkodeGroup/campus_virtual/milestone/2)
+
+### Organización de issues
+Las issues se vinculan automáticamente al Project y a los milestones según su fase. Puedes ver el estado y avance en el tablero visual.
+
 ---
 *FolKode Group 2026*
