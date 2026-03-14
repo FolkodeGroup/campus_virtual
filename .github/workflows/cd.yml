@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PROJECTS_TOKEN || github.token }}
       
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -43,6 +45,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PROJECTS_TOKEN || github.token }}
       
       - name: Copy docker-compose to VPS
         uses: appleboy/scp-action@master
