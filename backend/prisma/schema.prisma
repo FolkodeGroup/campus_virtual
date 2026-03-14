@@ -26,6 +26,20 @@ model User {
   rol       Role     @default(ALUMNO)
   activo    Boolean  @default(true)
 
+  student  Student?
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Student {
+  id        String   @id @default(uuid())
+  userId    String   @unique
+  dni       String   @unique
+  anoIngreso Int
+  anoEscolar  Int
+  turno     String
+  activo    Boolean  @default(true)
+
+  user    User  @relation(fields: [userId], references: [id])
 }
