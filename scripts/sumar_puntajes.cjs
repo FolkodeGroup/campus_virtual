@@ -69,7 +69,10 @@ async function getAllPages(baseUrl) {
         'User-Agent': 'campus-virtual-scores',
       },
     });
-    if (!response.ok) break;
+    if (!response.ok) {
+      const text = await response.text();
+      throw new Error(`GitHub API ${response.status}: ${baseUrl}${separator}per_page=100&page=${page}\n${text}`);
+    }
     const data = await response.json();
     if (!Array.isArray(data) || data.length === 0) break;
     results.push(...data);
