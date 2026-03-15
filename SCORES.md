@@ -4,12 +4,18 @@
 
 | Dev | Puntaje acumulado |
 |-----|-------------------|
-| dgimenezdeveloper | 985 |
+| dgimenezdeveloper | 1055 |
 
 
 ## Detalle por actividad
 | Dev | Puntaje | Tipo | Título / Actividad | Fecha |
 |-----|---------|------|--------------------|-------|
+| dgimenezdeveloper | 5 | Gestión | Apertura de PR — PR #142: Fix puntaje semanal | 2026-03-15 |
+| dgimenezdeveloper | 15 | Gestión | Merge de PR — PR #142: Fix puntaje semanal | 2026-03-15 |
+| dgimenezdeveloper | 15 | Gestión | Revisión de PR — Aprobación — PR #142: Fix puntaje semanal | 2026-03-15 |
+| dgimenezdeveloper | 5 | Gestión | Apertura de PR — PR #139: Fix puntaje semanal | 2026-03-15 |
+| dgimenezdeveloper | 15 | Gestión | Merge de PR — PR #139: Fix puntaje semanal | 2026-03-15 |
+| dgimenezdeveloper | 15 | Gestión | Revisión de PR — Aprobación — PR #139: Fix puntaje semanal | 2026-03-15 |
 | dgimenezdeveloper | 5 | Gestión | Apertura de PR — PR #137: Fix puntaje semanal | 2026-03-15 |
 | dgimenezdeveloper | 15 | Gestión | Merge de PR — PR #137: Fix puntaje semanal | 2026-03-15 |
 | dgimenezdeveloper | 15 | Gestión | Revisión de PR — Aprobación — PR #137: Fix puntaje semanal | 2026-03-15 |
