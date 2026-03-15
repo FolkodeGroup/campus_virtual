@@ -4,12 +4,14 @@
 
 | Dev | Puntaje acumulado |
 |-----|-------------------|
-| dgimenezdeveloper | 863 |
+| dgimenezdeveloper | 883 |
 
 
 ## Detalle por actividad
 | Dev | Puntaje | Tipo | Título / Actividad | Fecha |
 |-----|---------|------|--------------------|-------|
+| dgimenezdeveloper | 5 | Gestión | Apertura de PR — PR #126: Fix puntaje semanal | 2026-03-15 |
+| dgimenezdeveloper | 15 | Gestión | Merge de PR — PR #126: Fix puntaje semanal | 2026-03-15 |
 | dgimenezdeveloper | 5 | Gestión | Apertura de PR — PR #120: Ambos workflows ahora usan únicamente ${{ github.token }} en todos lo… | 2026-03-15 |
 | dgimenezdeveloper | 15 | Gestión | Merge de PR — PR #120: Ambos workflows ahora usan únicamente ${{ github.token }} en todos lo… | 2026-03-15 |
 | dgimenezdeveloper | 5 | Gestión | Apertura de PR — PR #119: Descripción clara de cada rol y sus capacidades. | 2026-03-15 |
