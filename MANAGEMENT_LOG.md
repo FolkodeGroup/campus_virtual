@@ -237,3 +237,4 @@
 | dgimenezdeveloper | 15 | Merge de PR | PR #114: Modelo usuario creado en el schema | 2026-03-14 |
 | dgimenezdeveloper | 15 | Merge de PR | PR #122: Fix puntaje semanal | 2026-03-15 |
 | dgimenezdeveloper | 15 | Revisión de PR — Aprobación | PR #123: 🔄 Actualización automática de puntajes semanal | 2026-03-15 |
+| dgimenezdeveloper | 15 | Revisión de PR — Aprobación | PR #128: Fix puntaje semanal | 2026-03-15 |
