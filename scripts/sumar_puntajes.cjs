@@ -5,7 +5,8 @@
  * sumar_puntajes.cjs
  * Consolida SCORES.md sumando:
  *   1. Puntaje de issues cerrados (lee PUNTAJE: X del body del issue)
- *      — El puntaje se acredita al assignee; si no tiene, al autor.
+ *      — El puntaje se acredita a todos los assignees; si no hay, al autor.
+ *      — También acredita a quien cierra la issue si es distinto.
  *   2. Actividades de gestión desde MANAGEMENT_LOG.md
  *
  * Mapeo de usuarios:
@@ -71,20 +72,40 @@ async function main() {
 
   for (const issue of issues) {
     if (issue.pull_request) continue;
+
     const body = issue.body || '';
-    const match = body.match(/PUNTAJE\s*[:：]\s*(\d+)/i);
+    // Buscar puntaje en la misma línea o en la siguiente
+    let match = body.match(/PUNTAJE\s*[:：]\s*(\d+)/i);
+    if (!match) {
+      // Buscar formato con salto de línea: PUNTAJE: \n 35
+      match = body.match(/PUNTAJE\s*[:：]\s*\n\s*(\d+)/i);
+    }
     if (!match) continue;
 
     const puntaje = parseInt(match[1], 10);
     if (puntaje <= 0) continue;
 
-    const assignee = issue.assignee?.login || issue.user?.login || 'unknown';
-    const fecha = (issue.closed_at || issue.updated_at).split('T')[0];
-    addEntry(assignee, puntaje, 'Issue', issue.title, fecha);
+    const recipients = new Set();
+    for (const assignee of issue.assignees || []) {
+      if (assignee?.login) recipients.add(assignee.login);
+    }
 
-    // Sumar también al usuario que cerró la issue si es distinto
-    if (issue.closed_by && issue.closed_by.login && issue.closed_by.login !== assignee) {
-      addEntry(issue.closed_by.login, puntaje, 'Issue (cerrada)', issue.title, fecha);
+    if (recipients.size === 0 && issue.assignee?.login) {
+      recipients.add(issue.assignee.login);
+    }
+
+    if (recipients.size === 0 && issue.user?.login) {
+      recipients.add(issue.user.login);
+    }
+
+    if (issue.closed_by?.login) {
+      recipients.add(issue.closed_by.login);
+    }
+
+    const fecha = (issue.closed_at || issue.updated_at).split('T')[0];
+    for (const dev of recipients) {
+      const tipo = issue.closed_by?.login === dev ? 'Issue (cerrada)' : 'Issue';
+      addEntry(dev, puntaje, tipo, issue.title, fecha);
     }
   }
 

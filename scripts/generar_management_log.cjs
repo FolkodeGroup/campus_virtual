@@ -8,8 +8,8 @@
  * - Issues (apertura + etiquetado + asignación)
  * - Milestones (creación + cierre)
  *
- * Solo registra actividades de: dgimenezdeveloper, folkodegroup
- * Ambos se acreditan a: dgimenezdeveloper
+ * Registra actividades de todos los colaboradores humanos del repositorio.
+ * Los bots se excluyen para evitar ruido en puntajes.
  */
 
 const fs = require('fs');
@@ -17,7 +17,6 @@ const fs = require('fs');
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const OWNER = 'FolkodeGroup';
 const REPO = 'campus_virtual';
-const TRACKED_ACTORS = new Set(['dgimenezdeveloper', 'folkodegroup']);
 const DEV_MAP = { folkodegroup: 'dgimenezdeveloper' };
 
 if (!GITHUB_TOKEN) {
@@ -27,6 +26,11 @@ if (!GITHUB_TOKEN) {
 
 function resolveActor(actor) {
   return DEV_MAP[(actor || '').toLowerCase()] || actor;
+}
+
+function isHumanActor(actor) {
+  if (!actor) return false;
+  return !actor.toLowerCase().endsWith('[bot]');
 }
 
 async function githubFetch(url) {
@@ -70,7 +74,7 @@ async function main() {
 
   for (const pr of prs) {
     const actor = pr.user?.login;
-    if (!TRACKED_ACTORS.has(actor)) continue;
+    if (!isHumanActor(actor)) continue;
 
     const dev = resolveActor(actor);
     const fechaOpen = pr.created_at.split('T')[0];
@@ -80,7 +84,7 @@ async function main() {
 
     if (pr.merged_at) {
       const mergedBy = pr.merged_by?.login || actor;
-      if (TRACKED_ACTORS.has(mergedBy)) {
+      if (isHumanActor(mergedBy)) {
         entries.push({
           dev: resolveActor(mergedBy),
           puntaje: 15,
@@ -96,7 +100,7 @@ async function main() {
       const reviews = await getAllPages(`${BASE}/pulls/${pr.number}/reviews`);
       for (const review of reviews) {
         const reviewer = review.user?.login;
-        if (!TRACKED_ACTORS.has(reviewer)) continue;
+        if (!isHumanActor(reviewer)) continue;
         const reviewDev = resolveActor(reviewer);
         const state = review.state?.toLowerCase();
         const reviewFecha = review.submitted_at?.split('T')[0] || fechaOpen;
@@ -122,7 +126,7 @@ async function main() {
     if (issue.pull_request) continue; // Saltear PRs listados como issues
 
     const actor = issue.user?.login;
-    if (!TRACKED_ACTORS.has(actor)) continue;
+    if (!isHumanActor(actor)) continue;
 
     const dev = resolveActor(actor);
     const fecha = issue.created_at.split('T')[0];
@@ -135,7 +139,7 @@ async function main() {
       const events = await getAllPages(`${BASE}/issues/${issue.number}/events`);
       for (const event of events) {
         const eventActor = event.actor?.login;
-        if (!TRACKED_ACTORS.has(eventActor)) continue;
+        if (!isHumanActor(eventActor)) continue;
         const eventDev = resolveActor(eventActor);
         const eventFecha = event.created_at?.split('T')[0] || fecha;
 
@@ -158,7 +162,7 @@ async function main() {
     const milestones = await getAllPages(`${BASE}/milestones?state=all`);
     for (const ms of milestones) {
       const actor = ms.creator?.login;
-      if (!TRACKED_ACTORS.has(actor)) continue;
+      if (!isHumanActor(actor)) continue;
       const dev = resolveActor(actor);
       const ref = `Milestone: ${ms.title}`;
 
