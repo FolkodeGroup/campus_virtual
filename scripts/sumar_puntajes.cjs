@@ -29,6 +29,22 @@ function resolveActor(actor) {
   return DEV_MAP[(actor || '').toLowerCase()] || actor;
 }
 
+function isHumanActor(actor) {
+  if (!actor) return false;
+  return !actor.toLowerCase().endsWith('[bot]');
+}
+
+function extractClosedIssueNumbers(text) {
+  if (!text) return [];
+  const numbers = new Set();
+  const re = /(close[sd]?|fix(?:e[sd])?|resolve[sd]?)\s*:?\s*#(\d+)/gi;
+  let match;
+  while ((match = re.exec(text)) !== null) {
+    numbers.add(Number(match[2]));
+  }
+  return [...numbers];
+}
+
 async function getAllPages(baseUrl) {
   const results = [];
   let page = 1;
@@ -69,6 +85,23 @@ async function main() {
   // ── 1. Issues cerrados con PUNTAJE ──────────────────────────────────────────
   console.log('  → Leyendo issues cerrados...');
   const issues = await getAllPages(`${BASE}/issues?state=closed`);
+  const prs = await getAllPages(`${BASE}/pulls?state=closed`);
+
+  // Mapa issueNumber -> autores de PRs mergeados que la cierran
+  const issueToMergedPrAuthors = new Map();
+  for (const pr of prs) {
+    if (!pr.merged_at) continue;
+    const closedIssues = extractClosedIssueNumbers(pr.body || '');
+    for (const issueNumber of closedIssues) {
+      if (!issueToMergedPrAuthors.has(issueNumber)) {
+        issueToMergedPrAuthors.set(issueNumber, new Set());
+      }
+      const prAuthor = pr.user?.login;
+      if (isHumanActor(prAuthor)) {
+        issueToMergedPrAuthors.get(issueNumber).add(prAuthor);
+      }
+    }
+  }
 
   for (const issue of issues) {
     if (issue.pull_request) continue;
@@ -87,18 +120,25 @@ async function main() {
 
     const recipients = new Set();
     for (const assignee of issue.assignees || []) {
-      if (assignee?.login) recipients.add(assignee.login);
+      if (isHumanActor(assignee?.login)) recipients.add(assignee.login);
     }
 
-    if (recipients.size === 0 && issue.assignee?.login) {
+    const prAuthors = issueToMergedPrAuthors.get(issue.number);
+    if (prAuthors) {
+      for (const author of prAuthors) {
+        if (isHumanActor(author)) recipients.add(author);
+      }
+    }
+
+    if (recipients.size === 0 && isHumanActor(issue.assignee?.login)) {
       recipients.add(issue.assignee.login);
     }
 
-    if (recipients.size === 0 && issue.user?.login) {
+    if (recipients.size === 0 && isHumanActor(issue.user?.login)) {
       recipients.add(issue.user.login);
     }
 
-    if (issue.closed_by?.login) {
+    if (isHumanActor(issue.closed_by?.login)) {
       recipients.add(issue.closed_by.login);
     }
 
@@ -124,6 +164,9 @@ async function main() {
 
       const [, dev, puntajeStr, actividad, referencia, fecha] = match;
       if (dev.trim() === 'Dev') continue; // Saltar encabezado
+
+      // Evitar doble conteo: resolución de issue ya se suma desde la API de issues
+      if (actividad.trim().toLowerCase() === 'resolucion de issue') continue;
 
       const puntaje = parseInt(puntajeStr, 10);
       if (isNaN(puntaje) || puntaje <= 0) continue;

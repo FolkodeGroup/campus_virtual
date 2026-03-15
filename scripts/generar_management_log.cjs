@@ -39,6 +39,17 @@ function isTrackedManagementActor(actor) {
   return TRACKED_MANAGEMENT_ACTORS.has(actor.toLowerCase());
 }
 
+function extractClosedIssueNumbers(text) {
+  if (!text) return [];
+  const numbers = new Set();
+  const re = /(close[sd]?|fix(?:e[sd])?|resolve[sd]?)\s*:?\s*#(\d+)/gi;
+  let match;
+  while ((match = re.exec(text)) !== null) {
+    numbers.add(Number(match[2]));
+  }
+  return [...numbers];
+}
+
 async function githubFetch(url) {
   const response = await fetch(url, {
     headers: {
@@ -74,6 +85,9 @@ async function main() {
   const BASE = `https://api.github.com/repos/${OWNER}/${REPO}`;
   const entries = [];
 
+  // Mapa issueNumber -> autores de PRs mergeados que la cierran
+  const issueToMergedPrAuthors = new Map();
+
   // ── 1. Pull Requests ─────────────────────────────────────────────────────────
   console.log('  → Procesando Pull Requests...');
   const prs = await getAllPages(`${BASE}/pulls?state=all`);
@@ -98,6 +112,17 @@ async function main() {
           referencia: ref,
           fecha: pr.merged_at.split('T')[0],
         });
+      }
+
+      const closedIssues = extractClosedIssueNumbers(pr.body || '');
+      for (const issueNumber of closedIssues) {
+        if (!issueToMergedPrAuthors.has(issueNumber)) {
+          issueToMergedPrAuthors.set(issueNumber, new Set());
+        }
+        const prAuthor = pr.user?.login;
+        if (isHumanActor(prAuthor)) {
+          issueToMergedPrAuthors.get(issueNumber).add(prAuthor);
+        }
       }
     }
 
@@ -180,6 +205,47 @@ async function main() {
     }
   } catch (e) {
     console.warn(`  ⚠ No se pudieron obtener milestones: ${e.message}`);
+  }
+
+  // ── 4. Resolución de issues con PUNTAJE (todos los devs) ───────────────────
+  console.log('  → Procesando resolución de issues con puntaje...');
+  const closedIssues = await getAllPages(`${BASE}/issues?state=closed`);
+  for (const issue of closedIssues) {
+    if (issue.pull_request) continue;
+
+    const body = issue.body || '';
+    const match = body.match(/PUNTAJE\s*[:：]\s*(\d+)/i);
+    if (!match) continue;
+
+    const puntaje = parseInt(match[1], 10);
+    if (Number.isNaN(puntaje) || puntaje <= 0) continue;
+
+    const recipients = new Set();
+    for (const assignee of issue.assignees || []) {
+      if (isHumanActor(assignee?.login)) recipients.add(assignee.login);
+    }
+
+    const prAuthors = issueToMergedPrAuthors.get(issue.number);
+    if (prAuthors) {
+      for (const author of prAuthors) {
+        if (isHumanActor(author)) recipients.add(author);
+      }
+    }
+
+    if (isHumanActor(issue.closed_by?.login)) recipients.add(issue.closed_by.login);
+    if (recipients.size === 0 && isHumanActor(issue.user?.login)) recipients.add(issue.user.login);
+
+    const fecha = (issue.closed_at || issue.updated_at).split('T')[0];
+    const ref = `Issue #${issue.number}: ${issue.title.substring(0, 80)}`;
+    for (const devRaw of recipients) {
+      entries.push({
+        dev: resolveActor(devRaw),
+        puntaje,
+        actividad: 'Resolución de issue',
+        referencia: ref,
+        fecha,
+      });
+    }
   }
 
   // Ordenar por fecha ascendente
