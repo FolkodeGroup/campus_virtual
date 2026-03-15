@@ -42,4 +42,56 @@ model Student {
   activo    Boolean  @default(true)
 
   user    User  @relation(fields: [userId], references: [id])
+  enrollments Enrollment[]
+}
+
+
+enum ShiftType {
+  MANANA
+  TARDE
+  NOCHE
+}
+
+model Shift {
+  id      String   @id @default(uuid())
+  tipo    ShiftType
+  activo  Boolean  @default(true)
+
+  courses Course[]
+}
+
+model Course {
+  id         String   @id @default(uuid())
+  nombre     String
+  grado      String
+  division   String
+  anoEscolar Int
+  activo     Boolean  @default(true)
+
+  turnoId    String
+  turno      Shift    @relation(fields: [turnoId], references: [id])
+
+  enrollments Enrollment[]
+  
+  subjects Subject[]
+}
+
+model Enrollment {
+  id        String   @id @default(uuid())
+  studentId String
+  courseId  String
+
+  student   Student  @relation(fields: [studentId], references: [id])
+  course    Course   @relation(fields: [courseId], references: [id])
+
+  @@unique([studentId, courseId])
+}
+
+model Subject {
+  id        String   @id @default(uuid())
+  nombre    String
+  activo    Boolean  @default(true)
+
+  courseId  String
+  course    Course   @relation(fields: [courseId], references: [id])
 }
