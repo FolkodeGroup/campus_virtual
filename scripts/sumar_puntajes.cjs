@@ -72,8 +72,14 @@ async function main() {
 
   for (const issue of issues) {
     if (issue.pull_request) continue;
+
     const body = issue.body || '';
-    const match = body.match(/PUNTAJE\s*[:：]\s*(\d+)/i);
+    // Buscar puntaje en la misma línea o en la siguiente
+    let match = body.match(/PUNTAJE\s*[:：]\s*(\d+)/i);
+    if (!match) {
+      // Buscar formato con salto de línea: PUNTAJE: \n 35
+      match = body.match(/PUNTAJE\s*[:：]\s*\n\s*(\d+)/i);
+    }
     if (!match) continue;
 
     const puntaje = parseInt(match[1], 10);
