@@ -81,6 +81,11 @@ async function main() {
     const assignee = issue.assignee?.login || issue.user?.login || 'unknown';
     const fecha = (issue.closed_at || issue.updated_at).split('T')[0];
     addEntry(assignee, puntaje, 'Issue', issue.title, fecha);
+
+    // Sumar también al usuario que cerró la issue si es distinto
+    if (issue.closed_by && issue.closed_by.login && issue.closed_by.login !== assignee) {
+      addEntry(issue.closed_by.login, puntaje, 'Issue (cerrada)', issue.title, fecha);
+    }
   }
 
   // ── 2. Actividades de gestión desde MANAGEMENT_LOG.md ───────────────────────
