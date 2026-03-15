@@ -50,6 +50,18 @@ function extractClosedIssueNumbers(text) {
   return [...numbers];
 }
 
+function extractIssueScore(body) {
+  if (!body) return 0;
+  let match = body.match(/PUNTAJE\s*[:：]\s*(\d+)/i);
+  if (!match) {
+    // Soporta formato en dos lineas: PUNTAJE:\n35
+    match = body.match(/PUNTAJE\s*[:：]\s*\n\s*(\d+)/i);
+  }
+  if (!match) return 0;
+  const score = parseInt(match[1], 10);
+  return Number.isNaN(score) ? 0 : score;
+}
+
 async function githubFetch(url) {
   const response = await fetch(url, {
     headers: {
@@ -77,6 +89,19 @@ async function getAllPages(baseUrl) {
     page++;
   }
   return results;
+}
+
+async function getIssueHistoricalAssignees(baseUrl, issueNumber) {
+  const assignees = new Set();
+  const events = await getAllPages(`${baseUrl}/issues/${issueNumber}/events`);
+  for (const event of events) {
+    if (event.event !== 'assigned') continue;
+    const assignedLogin = event.assignee?.login;
+    if (isHumanActor(assignedLogin)) {
+      assignees.add(assignedLogin);
+    }
+  }
+  return assignees;
 }
 
 async function main() {
@@ -213,14 +238,22 @@ async function main() {
   for (const issue of closedIssues) {
     if (issue.pull_request) continue;
 
-    const body = issue.body || '';
-    const match = body.match(/PUNTAJE\s*[:：]\s*(\d+)/i);
-    if (!match) continue;
-
-    const puntaje = parseInt(match[1], 10);
+    const puntaje = extractIssueScore(issue.body || '');
     if (Number.isNaN(puntaje) || puntaje <= 0) continue;
 
     const recipients = new Set();
+
+    // 1) Prioridad: assignees historicos del issue (retroactivo + futuro)
+    try {
+      const historicalAssignees = await getIssueHistoricalAssignees(BASE, issue.number);
+      for (const login of historicalAssignees) {
+        recipients.add(login);
+      }
+    } catch (e) {
+      console.warn(`  ⚠ No se pudo leer historial de asignaciones en issue #${issue.number}: ${e.message}`);
+    }
+
+    // 2) Fallback: assignees actuales
     for (const assignee of issue.assignees || []) {
       if (isHumanActor(assignee?.login)) recipients.add(assignee.login);
     }
