@@ -235,3 +235,8 @@
 | dgimenezdeveloper | 15 | Merge de PR | PR #120: Ambos workflows ahora usan únicamente ${{ github.token }} en todos lo… | 2026-03-15 |
 | dgimenezdeveloper | 5 | Apertura de PR | PR #119: Descripción clara de cada rol y sus capacidades. | 2026-03-15 |
 | dgimenezdeveloper | 15 | Merge de PR | PR #119: Descripción clara de cada rol y sus capacidades. | 2026-03-15 |
+| dgimenezdeveloper | 3 | Asignación de issue a Nahuel-Dalesio | Issue #53: Cliente HTTP con Axios + interceptors | 2026-03-13 |
+| dgimenezdeveloper | 15 | Merge de PR | PR #114: Modelo usuario creado en el schema | 2026-03-14 |
+| dgimenezdeveloper | 15 | Merge de PR | PR #122: Fix puntaje semanal | 2026-03-15 |
+| dgimenezdeveloper | 15 | Revisión de PR — Aprobación | PR #123: 🔄 Actualización automática de puntajes semanal | 2026-03-15 |
+| dgimenezdeveloper | 15 | Revisión de PR — Aprobación | PR #128: Fix puntaje semanal | 2026-03-15 |
