@@ -21,11 +21,10 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-    # Solo procesar si el actor es dgimenezdeveloper o folkodegroup
     # Ignorar eventos generados por el propio bot (chore PRs)
     if: |
-      (github.actor == 'dgimenezdeveloper' || github.actor == 'folkodegroup') &&
-      github.event.pull_request.head.ref != 'chore/gestion-puntaje-auto'
+      !contains(github.actor, '[bot]') &&
+      (github.event_name != 'pull_request' || github.event.pull_request.head.ref != 'chore/gestion-puntaje-auto')
 
     steps:
       - name: Checkout code
@@ -42,8 +41,8 @@ jobs:
           github-token: ${{ github.token }}
           script: |
             const actor = context.actor;
-            // Siempre acreditar a dgimenezdeveloper (también cubre folkodegroup)
-            const devAcreditado = 'dgimenezdeveloper';
+            const devMap = { folkodegroup: 'dgimenezdeveloper' };
+            const devAcreditado = devMap[actor.toLowerCase()] || actor;
             const eventName = context.eventName;
             const payload = context.payload;
 
