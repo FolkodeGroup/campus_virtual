@@ -1,10 +1,27 @@
 # Management Log — Campus Virtual
 
 > Generado automáticamente. Registra todas las actividades de gestión del proyecto.
-> Última actualización: 2026-03-12
+> Última actualización: 2026-03-15
 
 | Dev | Puntaje | Actividad | Referencia | Fecha |
 |-----|---------|-----------|------------|-------|
+| dgimenezdeveloper | 5 | Apertura de PR | PR #100: 11 configuración de GitHub actions cd pipeline docker vps | 2026-03-12 |
+| dgimenezdeveloper | 15 | Merge de PR | PR #100: 11 configuración de GitHub actions cd pipeline docker vps | 2026-03-12 |
+| dgimenezdeveloper | 5 | Apertura de PR | PR #98: He completado la configuración del pipeline de CI (Integración Contin… | 2026-03-12 |
+| dgimenezdeveloper | 15 | Merge de PR | PR #98: He completado la configuración del pipeline de CI (Integración Contin… | 2026-03-12 |
+| dgimenezdeveloper | 5 | Apertura de PR | PR #96: He consolidado y fortalecido la gestión de variables de entorno para … | 2026-03-12 |
+| dgimenezdeveloper | 15 | Merge de PR | PR #96: He consolidado y fortalecido la gestión de variables de entorno para … | 2026-03-12 |
+| dgimenezdeveloper | 5 | Apertura de PR | PR #95: feat: setup docker-compose dev environment with postgres, backend and… | 2026-03-12 |
+| dgimenezdeveloper | 15 | Merge de PR | PR #95: feat: setup docker-compose dev environment with postgres, backend and… | 2026-03-12 |
+| dgimenezdeveloper | 5 | Apertura de PR | PR #93: He configurado exitosamente el entorno de desarrollo con Docker Compo… | 2026-03-12 |
+| dgimenezdeveloper | 5 | Apertura de PR | PR #91: He configurado exitosamente Prisma ORM en el backend del proyecto, ut… | 2026-03-12 |
+| dgimenezdeveloper | 15 | Merge de PR | PR #91: He configurado exitosamente Prisma ORM en el backend del proyecto, ut… | 2026-03-12 |
+| dgimenezdeveloper | 5 | Apertura de PR | PR #89:  detallo las acciones realizadas en la carpeta backend: | 2026-03-12 |
+| dgimenezdeveloper | 15 | Merge de PR | PR #89:  detallo las acciones realizadas en la carpeta backend: | 2026-03-12 |
+| dgimenezdeveloper | 5 | Apertura de PR | PR #87: A continuación, detallo las acciones realizadas en la carpeta frontend: | 2026-03-12 |
+| dgimenezdeveloper | 15 | Merge de PR | PR #87: A continuación, detallo las acciones realizadas en la carpeta frontend: | 2026-03-12 |
+| dgimenezdeveloper | 5 | Apertura de PR | PR #86: He completado la inicialización del monorepo con npm workspaces para … | 2026-03-12 |
+| dgimenezdeveloper | 15 | Merge de PR | PR #86: He completado la inicialización del monorepo con npm workspaces para … | 2026-03-12 |
 | dgimenezdeveloper | 3 | Creación de issue | Issue #83: Documentación de despliegue en VPS y Docker | 2026-03-12 |
 | dgimenezdeveloper | 2 | Etiquetado de issue (DEVOPS) | Issue #83: Documentación de despliegue en VPS y Docker | 2026-03-12 |
 | dgimenezdeveloper | 3 | Creación de issue | Issue #82: Setup de E2E Testing con Playwright | 2026-03-12 |
@@ -155,42 +172,67 @@
 | dgimenezdeveloper | 3 | Creación de issue | Issue #14: README.md principal del proyecto | 2026-03-12 |
 | dgimenezdeveloper | 2 | Etiquetado de issue (DEVOPS) | Issue #14: README.md principal del proyecto | 2026-03-12 |
 | dgimenezdeveloper | 2 | Etiquetado de issue (DOCS) | Issue #14: README.md principal del proyecto | 2026-03-12 |
+| dgimenezdeveloper | 3 | Asignación de issue a dgimenezdeveloper | Issue #14: README.md principal del proyecto | 2026-03-12 |
 | dgimenezdeveloper | 3 | Creación de issue | Issue #13: Creación del GitHub Project y milestones | 2026-03-12 |
 | dgimenezdeveloper | 2 | Etiquetado de issue (SETUP) | Issue #13: Creación del GitHub Project y milestones | 2026-03-12 |
+| dgimenezdeveloper | 3 | Asignación de issue a dgimenezdeveloper | Issue #13: Creación del GitHub Project y milestones | 2026-03-12 |
 | dgimenezdeveloper | 3 | Creación de issue | Issue #12: Setup de workflows de puntajes (gestión + semanal) | 2026-03-12 |
 | dgimenezdeveloper | 2 | Etiquetado de issue (SETUP) | Issue #12: Setup de workflows de puntajes (gestión + semanal) | 2026-03-12 |
+| dgimenezdeveloper | 3 | Asignación de issue a dgimenezdeveloper | Issue #12: Setup de workflows de puntajes (gestión + semanal) | 2026-03-12 |
 | dgimenezdeveloper | 3 | Creación de issue | Issue #11: Configuración de GitHub Actions — CD Pipeline (Docker + VPS) | 2026-03-12 |
 | dgimenezdeveloper | 2 | Etiquetado de issue (DEVOPS) | Issue #11: Configuración de GitHub Actions — CD Pipeline (Docker + VPS) | 2026-03-12 |
+| dgimenezdeveloper | 3 | Asignación de issue a dgimenezdeveloper | Issue #11: Configuración de GitHub Actions — CD Pipeline (Docker + VPS) | 2026-03-12 |
 | dgimenezdeveloper | 3 | Creación de issue | Issue #10: Configuración de GitHub Actions — CI Pipeline (build + test) | 2026-03-12 |
 | dgimenezdeveloper | 2 | Etiquetado de issue (DEVOPS) | Issue #10: Configuración de GitHub Actions — CI Pipeline (build + test) | 2026-03-12 |
+| dgimenezdeveloper | 3 | Asignación de issue a dgimenezdeveloper | Issue #10: Configuración de GitHub Actions — CI Pipeline (build + test) | 2026-03-12 |
 | dgimenezdeveloper | 3 | Creación de issue | Issue #9: Configuración de variables de entorno y gestión de secretos | 2026-03-12 |
 | dgimenezdeveloper | 2 | Etiquetado de issue (SETUP) | Issue #9: Configuración de variables de entorno y gestión de secretos | 2026-03-12 |
+| dgimenezdeveloper | 3 | Asignación de issue a dgimenezdeveloper | Issue #9: Configuración de variables de entorno y gestión de secretos | 2026-03-12 |
 | dgimenezdeveloper | 3 | Creación de issue | Issue #8: Setup de docker-compose para desarrollo local | 2026-03-12 |
 | dgimenezdeveloper | 2 | Etiquetado de issue (SETUP) | Issue #8: Setup de docker-compose para desarrollo local | 2026-03-12 |
+| dgimenezdeveloper | 3 | Asignación de issue a dgimenezdeveloper | Issue #8: Setup de docker-compose para desarrollo local | 2026-03-12 |
 | dgimenezdeveloper | 3 | Creación de issue | Issue #7: Configuración de PostgreSQL + Prisma ORM | 2026-03-12 |
 | dgimenezdeveloper | 2 | Etiquetado de issue (BACKEND) | Issue #7: Configuración de PostgreSQL + Prisma ORM | 2026-03-12 |
+| dgimenezdeveloper | 3 | Asignación de issue a dgimenezdeveloper | Issue #7: Configuración de PostgreSQL + Prisma ORM | 2026-03-12 |
 | dgimenezdeveloper | 3 | Creación de issue | Issue #6: Setup del backend con Node.js + Express + TypeScript | 2026-03-12 |
 | dgimenezdeveloper | 2 | Etiquetado de issue (FEATURE) | Issue #6: Setup del backend con Node.js + Express + TypeScript | 2026-03-12 |
 | dgimenezdeveloper | 2 | Etiquetado de issue (BACKEND) | Issue #6: Setup del backend con Node.js + Express + TypeScript | 2026-03-12 |
+| dgimenezdeveloper | 3 | Asignación de issue a dgimenezdeveloper | Issue #6: Setup del backend con Node.js + Express + TypeScript | 2026-03-12 |
 | dgimenezdeveloper | 3 | Creación de issue | Issue #5: Setup del frontend con Vite + React + TypeScript + ESLint + Prettier | 2026-03-12 |
 | dgimenezdeveloper | 2 | Etiquetado de issue (SETUP) | Issue #5: Setup del frontend con Vite + React + TypeScript + ESLint + Prettier | 2026-03-12 |
+| dgimenezdeveloper | 3 | Asignación de issue a dgimenezdeveloper | Issue #5: Setup del frontend con Vite + React + TypeScript + ESLint + Prettier | 2026-03-12 |
 | dgimenezdeveloper | 3 | Creación de issue | Issue #4: Inicialización del monorepo con workspaces (package.json raíz) | 2026-03-12 |
 | dgimenezdeveloper | 2 | Etiquetado de issue (SETUP) | Issue #4: Inicialización del monorepo con workspaces (package.json raíz) | 2026-03-12 |
+| dgimenezdeveloper | 3 | Asignación de issue a dgimenezdeveloper | Issue #4: Inicialización del monorepo con workspaces (package.json raíz) | 2026-03-12 |
 | dgimenezdeveloper | 3 | Creación de issue | Issue #2: Setup del frontend con Vite + React + TypeScript + ESLint + Prettier | 2026-03-12 |
 | dgimenezdeveloper | 2 | Etiquetado de issue (FEATURE) | Issue #2: Setup del frontend con Vite + React + TypeScript + ESLint + Prettier | 2026-03-12 |
 | dgimenezdeveloper | 3 | Creación de issue | Issue #1: Inicialización del monorepo con workspaces (package.json raíz) | 2026-03-12 |
 | dgimenezdeveloper | 2 | Etiquetado de issue (FEATURE) | Issue #1: Inicialización del monorepo con workspaces (package.json raíz) | 2026-03-12 |
 | dgimenezdeveloper | 5 | Creación de milestone | Milestone: Fase 1 — 13 cursos | 2026-03-12 |
 | dgimenezdeveloper | 5 | Creación de milestone | Milestone: Fase 2 — 30 cursos | 2026-03-12 |
-| dgimenezdeveloper | 5 | Apertura de PR | PR #87: A continuación, detallo las acciones realizadas en la carpeta frontend: | 2026-03-12 |
-| dgimenezdeveloper | 15 | Merge de PR | PR #87: A continuación, detallo las acciones realizadas en la carpeta frontend: | 2026-03-12 |
-| dgimenezdeveloper | 15 | Merge de PR | PR #89:  detallo las acciones realizadas en la carpeta backend: | 2026-03-12 |
-| dgimenezdeveloper | 15 | Merge de PR | PR #91: He configurado exitosamente Prisma ORM en el backend del proyecto, ut… | 2026-03-12 |
-| dgimenezdeveloper | 15 | Merge de PR | PR #96: He consolidado y fortalecido la gestión de variables de entorno para … | 2026-03-12 |
-| dgimenezdeveloper | 15 | Merge de PR | PR #98: He completado la configuración del pipeline de CI (Integración Contin… | 2026-03-12 |
-| dgimenezdeveloper | 15 | Merge de PR | PR #102: 11 configuración de GitHub actions cd pipeline docker vps | 2026-03-13 |
-| dgimenezdeveloper | 15 | Merge de PR | PR #107: 11 configuración de GitHub actions cd pipeline docker vps | 2026-03-13 |
+| dgimenezdeveloper | 5 | Apertura de PR | PR #112: ¡Listo! El README.md principal del proyecto ahora está completamente … | 2026-03-13 |
+| dgimenezdeveloper | 15 | Merge de PR | PR #112: ¡Listo! El README.md principal del proyecto ahora está completamente … | 2026-03-13 |
+| dgimenezdeveloper | 5 | Apertura de PR | PR #110: ¡Listo! Ahora el README.md incluye la documentación del GitHub Projec… | 2026-03-13 |
+| dgimenezdeveloper | 15 | Merge de PR | PR #110: ¡Listo! Ahora el README.md incluye la documentación del GitHub Projec… | 2026-03-13 |
+| dgimenezdeveloper | 5 | Apertura de PR | PR #108: Todos los elementos solicitados están presentes, adaptados y funciona… | 2026-03-13 |
 | dgimenezdeveloper | 15 | Merge de PR | PR #108: Todos los elementos solicitados están presentes, adaptados y funciona… | 2026-03-13 |
+| dgimenezdeveloper | 5 | Apertura de PR | PR #107: 11 configuración de GitHub actions cd pipeline docker vps | 2026-03-13 |
+| dgimenezdeveloper | 15 | Merge de PR | PR #107: 11 configuración de GitHub actions cd pipeline docker vps | 2026-03-13 |
+| dgimenezdeveloper | 5 | Apertura de PR | PR #106: Cambio de puertos | 2026-03-13 |
+| dgimenezdeveloper | 15 | Merge de PR | PR #106: Cambio de puertos | 2026-03-13 |
+| dgimenezdeveloper | 5 | Apertura de PR | PR #105: 11 configuración de GitHub actions cd pipeline docker vps | 2026-03-13 |
+| dgimenezdeveloper | 15 | Merge de PR | PR #105: 11 configuración de GitHub actions cd pipeline docker vps | 2026-03-13 |
+| dgimenezdeveloper | 5 | Apertura de PR | PR #103: 11 configuración de GitHub actions cd pipeline docker vps | 2026-03-13 |
+| dgimenezdeveloper | 15 | Merge de PR | PR #103: 11 configuración de GitHub actions cd pipeline docker vps | 2026-03-13 |
+| dgimenezdeveloper | 5 | Apertura de PR | PR #102: 11 configuración de GitHub actions cd pipeline docker vps | 2026-03-13 |
+| dgimenezdeveloper | 15 | Merge de PR | PR #102: 11 configuración de GitHub actions cd pipeline docker vps | 2026-03-13 |
+| dgimenezdeveloper | 5 | Apertura de PR | PR #116: Diagrama ERD en Mermaid con las entidades pedidas. | 2026-03-14 |
+| dgimenezdeveloper | 15 | Merge de PR | PR #116: Diagrama ERD en Mermaid con las entidades pedidas. | 2026-03-14 |
+| dgimenezdeveloper | 3 | Asignación de issue a dgimenezdeveloper | Issue #15: Documentación del modelo de datos (ERD) | 2026-03-14 |
+| dgimenezdeveloper | 5 | Apertura de PR | PR #120: Ambos workflows ahora usan únicamente ${{ github.token }} en todos lo… | 2026-03-15 |
+| dgimenezdeveloper | 15 | Merge de PR | PR #120: Ambos workflows ahora usan únicamente ${{ github.token }} en todos lo… | 2026-03-15 |
+| dgimenezdeveloper | 5 | Apertura de PR | PR #119: Descripción clara de cada rol y sus capacidades. | 2026-03-15 |
+| dgimenezdeveloper | 15 | Merge de PR | PR #119: Descripción clara de cada rol y sus capacidades. | 2026-03-15 |
 | dgimenezdeveloper | 3 | Asignación de issue a Nahuel-Dalesio | Issue #53: Cliente HTTP con Axios + interceptors | 2026-03-13 |
 | dgimenezdeveloper | 15 | Merge de PR | PR #114: Modelo usuario creado en el schema | 2026-03-14 |
 | dgimenezdeveloper | 15 | Merge de PR | PR #122: Fix puntaje semanal | 2026-03-15 |
