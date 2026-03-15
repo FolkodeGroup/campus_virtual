@@ -21,9 +21,11 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-    # Ignorar eventos generados por el propio bot (chore PRs)
+    # Solo maintainers suman puntajes de gestión.
+    # Ignorar eventos generados por el propio bot (chore PRs).
     if: |
       !contains(github.actor, '[bot]') &&
+      (github.actor == 'dgimenezdeveloper' || github.actor == 'folkodegroup') &&
       (github.event_name != 'pull_request' || github.event.pull_request.head.ref != 'chore/gestion-puntaje-auto')
 
     steps:
