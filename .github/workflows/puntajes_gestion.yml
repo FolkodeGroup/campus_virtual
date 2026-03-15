@@ -39,7 +39,7 @@ jobs:
         id: calcular
         uses: actions/github-script@v7
         with:
-          github-token: ${{ secrets.PROJECTS_TOKEN || github.token }}
+          github-token: ${{ github.token }}
           script: |
             const actor = context.actor;
             // Siempre acreditar a dgimenezdeveloper (también cubre folkodegroup)
@@ -135,7 +135,7 @@ jobs:
       - name: Crear Pull Request automático con cambios de puntaje
         uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{ secrets.PROJECTS_TOKEN || github.token }}
+          token: ${{ github.token }}
           commit-message: "chore: registrar puntaje de gestión [skip ci]"
           title: "🔄 Registrar puntaje de gestión"
           body: |
