@@ -56,7 +56,7 @@ jobs:
       - name: Crear Pull Request automático con cambios de puntaje
         uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{ github.token }}
+          token: ${{ secrets.PROJECTS_TOKEN }}
           commit-message: "chore: actualización automática de puntajes semanal [skip ci]"
           title: "🔄 Actualización automática de puntajes semanal"
           body: |
