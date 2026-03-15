@@ -50,7 +50,9 @@ async function main() {
   const missing = issues.filter((issue) => {
     if (issue.pull_request) return false;
     const body = issue.body || '';
-    return !/PUNTAJE\s*[:：]\s*\d+/i.test(body);
+    // Buscar PUNTAJE en la misma línea O en la siguiente
+    const hasPuntaje = /PUNTAJE\s*[:：]\s*\d+/i.test(body) || /PUNTAJE\s*[:：]\s*\n\s*\d+/i.test(body);
+    return !hasPuntaje;
   });
 
   // Limpiar reporte anterior si no hay issues faltantes
