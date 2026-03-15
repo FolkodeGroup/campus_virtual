@@ -100,3 +100,5 @@
 | dgimenezdeveloper | 5 | Apertura de PR | PR #119: Descripción clara de cada rol y sus capacidades. | 2026-03-15 |
 | dgimenezdeveloper | 15 | Merge de PR | PR #119: Descripción clara de cada rol y sus capacidades. | 2026-03-15 |
 | dgimenezdeveloper | 15 | Revisión de PR — Aprobación | PR #119: Descripción clara de cada rol y sus capacidades. | 2026-03-15 |
+| dgimenezdeveloper | 5 | Apertura de PR | PR #139: Fix puntaje semanal | 2026-03-15 |
+| dgimenezdeveloper | 15 | Revisión de PR — Aprobación | PR #138: 🔄 Registrar puntaje de gestión | 2026-03-15 |
